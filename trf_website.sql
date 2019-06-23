@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 23, 2019 at 06:45 AM
+-- Generation Time: Jun 22, 2019 at 02:51 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -41,25 +41,6 @@ CREATE TABLE IF NOT EXISTS `project` (
   `tags` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `project`
---
-
-INSERT INTO `project` (`id`, `title`, `status`, `githubLink`, `photo`, `teamdId`, `likes`, `date`, `tags`) VALUES
-(6, 'wc', 'dq', '', '', 1, 69, '2019-06-23', 'dql'),
-(6, 'wc', 'dq', '', '', 1, 69, '2019-06-23', 'dql'),
-(6, 'hkx', 'ON', '', 'photo_2019-05-10_13-32-48.jpg', 5, 89, '2019-05-22', 'BKAKA'),
-(6, 'qwd', 'dwq', '', 'photo_2019-05-10_13-32-50.jpg', 1, 50, '2019-06-24', 'dwq'),
-(90, 's', 'cwq', '', 'photo_2019-05-10_13-32-50.jpg', 5, 21, '2019-06-22', 's'),
-(90, 's', 'cwq', '', 'photo_2019-05-10_13-32-50.jpg', 5, 21, '2019-06-22', 's'),
-(90, 's', 'cwq', '', 'photo_2019-05-10_13-32-50.jpg', 5, 21, '2019-06-22', 's'),
-(90, 's', 'cwq', '', 'photo_2019-05-10_13-32-50.jpg', 5, 21, '2019-06-22', 's'),
-(90, 's', 'cwq', '', 'photo_2019-05-10_13-32-50.jpg', 5, 21, '2019-06-22', 's'),
-(7, 'guk', 'jo', '', 'photo_2019-05-10_13-32-50.jpg', 12, 89, '2019-06-22', 'ggk'),
-(4, 'dmol', 'sg', '', 'photo_2019-05-10_13-32-50.jpg', 4, 78, '2019-06-21', 'sg'),
-(4, 'dmol', 'sg', '', 'photo_2019-05-10_13-32-50.jpg', 4, 78, '2019-06-21', 'sg'),
-(4, 'dq', 'w', '', 'photo_2019-05-10_13-32-50.jpg', 4, 78, '2019-06-21', 'fw');
-
 -- --------------------------------------------------------
 
 --
@@ -96,6 +77,7 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `member6` int(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
