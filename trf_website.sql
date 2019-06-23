@@ -40,6 +40,44 @@ CREATE TABLE IF NOT EXISTS `project` (
   `date` date NOT NULL,
   `tags` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+--
+
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE IF NOT EXISTS `tags` (
+  `id` int(10) NOT NULL,
+  `name` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`id`, `name`) VALUES
+(1, 'Machine learning');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `teams`
+--
+
+DROP TABLE IF EXISTS `teams`;
+CREATE TABLE IF NOT EXISTS `teams` (
+  `id` int(100) NOT NULL,
+  `member1` int(100) DEFAULT NULL,
+  `member2` int(100) DEFAULT NULL,
+  `member3` int(100) DEFAULT NULL,
+  `member4` int(100) DEFAULT NULL,
+  `member5` int(100) DEFAULT NULL,
+  `member6` int(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
