@@ -1,12 +1,13 @@
 <?php
 	require('database_connection.php'); 
+	session_start();
 ?>
 <html>
 <head>
 </head>
 <body>
 <form name="form" action="" method="get">
-	<input size="100" type="text" name="title_project" id="title_project" list="List" placeholder="Enter Author's name and Project Title"/>
+	<input size="100" type="text" name="title_project" id="title_project" list="List" placeholder="Enter Project Title"/>
 	<br>
 	<?php
 	$query7 = "SELECT * FROM `tags` WHERE 1";
@@ -15,7 +16,7 @@
 	<?php 
 	while($row7 = mysqli_fetch_array($result7)) //Dynamic CHECKBOX
 		{?>
-			<input id="<?php  echo $i; ?>" type="checkbox" name="tag[]" value="<?php  echo $row7['name']; ?>" />
+			<input id="<?php  echo $i; ?>" type="checkbox" name="tag[]" value="<?php  echo $row7['name']; ?>" /> 
 			<label for="<?php echo $i; ?>"><?php  echo $row7['name']; ?></label>
 			<br />
 			<?php } ?>
@@ -92,10 +93,13 @@ $_SESSION['title_project']="";
 							if($num_rows>0)
 						 		{
 									while($row = mysqli_fetch_array($result3))
-										{ 	?>							
-								 			<a href="search.php"><?php echo $row['title'];?></a> <?php #replace search.php with file where it will get redirected
+										{ 		
+  											$link = $row['title'];
+												?>
+											<a href="display.php?link=<?php echo $link; ?>"><?php echo $link; ?></a>	
+											<?php				
 											echo "<br>";
-					         			echo "Team id-".$row['id'];
+					         			echo "Team id-".$row['id'];//printing
 											echo "<br>";
 											echo "<br>";
 										}	
@@ -116,8 +120,11 @@ $_SESSION['title_project']="";
 								if($num_rows>0)
 									{
 										while($row = mysqli_fetch_array($result3))		
-											{ 	?>
-												<a href="search.php"><?php echo $row['title'];?></a> <?php #replace search.php with file where it will get redirected
+											{
+												$link = $row['title'];
+													 	?>
+												<a href="display.php?link=<?php echo $link; ?>"><?php echo $link; ?></a>	
+											<?php	
 												echo "<br>";
 					         				echo "Team id-".$row['id'];
 												echo "<br>";
@@ -140,43 +147,58 @@ $_SESSION['title_project']="";
 	 					$string = $tag_project;
 	 					$j=0;
 	 					$k=FALSE;
-						$ids = explode(',', $string);
+	 					$l=0;
+						$ids = explode(',', $string);//creating logic for tag checking
 						$d=count($ids);
+						
 						$query11="SELECT * FROM project WHERE 1";
 						$result11 = mysqli_query($con,$query11);
 						$num_rows1 = mysqli_num_rows($result11);
 						
-								while($row11 = mysqli_fetch_array($result11))
+						while($row11 = mysqli_fetch_array($result11))
+							{
+								$l=0;
+								$j=0;                      //re-initialization
+								while($j<$d) 
 									{
-								if (strpos($row11['tags'], $ids[$j]) !== false)
-								 {?>
-								 <a href="search.php"><?php echo $row11['title'];?></a> <?php #replace search.php with file where it will get redirected
-										echo "<br>";
-					         		echo "Team id-".$row11['id'];
-										echo "<br>";
-										echo "<br>";
-										$k=TRUE;
-								}
+										if (strpos($row11['tags'], $ids[$j]) !== false) //checks whether given tag is present ot not
+								 			{
+												$l++;								 	
+								 				}
+								 			$j++;
+								 		}
+									if($l==$d)
+								 		{
+								 			$link = $row11['title'];
+								 				?>
+								 			<a href="display.php?link=<?php echo $link; ?>"><?php echo $link; ?></a>	
+											<?php	
+											echo "<br>";
+					         			echo "Team id-".$row11['id'];
+											echo "<br>";
+											echo "<br>";
+											$k=TRUE;
+											}
 								
-								}
-								if($k==FALSE)//if no tags match
-								 {
-								 			echo ' <script type="text/javascript">
-					alert("Please select  Valid Project or Tag");
-					</script>';
-
-						}								
+										}
+									if($k==FALSE)//if no tags match
+								 		{
+								 			echo '<script type="text/javascript">
+										alert("No Projects Found with given criteria");
+										</script>';
+										echo "No projects found";
+											}								
 								
-					}
+									}
 					
-	else //If nothing is selectes
-		 {
-			echo ' <script type="text/javascript">
-					alert("Please select  Valid Project or Tag");
-					</script>';
+						else //If nothing is selected
+		 			{
+							echo ' <script type="text/javascript">
+										alert("Please select  Valid Project or Tag");
+										</script>';
 								
-			}
-			}
+						}
+					}
 			
 		
 	
