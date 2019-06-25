@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 22, 2019 at 02:51 PM
+-- Generation Time: Jun 25, 2019 at 10:57 AM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -35,11 +35,22 @@ CREATE TABLE IF NOT EXISTS `project` (
   `status` varchar(100) DEFAULT NULL,
   `githubLink` varchar(100) DEFAULT NULL,
   `photo` varchar(100) DEFAULT NULL,
-  `teamdId` int(100) NOT NULL,
+  `teamdId` varchar(50) NOT NULL,
   `likes` int(100) NOT NULL DEFAULT '0',
   `date` date NOT NULL,
-  `tags` varchar(100) NOT NULL
+  `tags` varchar(100) NOT NULL,
+  `description` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `project`
+--
+
+INSERT INTO `project` (`id`, `title`, `status`, `githubLink`, `photo`, `teamdId`, `likes`, `date`, `tags`, `description`) VALUES
+(1, 'hello', 'work', 'shdadbh', NULL, '1', 0, '2019-06-25', '1,2', ''),
+(2, 'bye', 'shsh', 'fjdjd', NULL, '3', 0, '2019-06-07', '1,2', ''),
+(4, 'we are good', 'on going', 'https:', NULL, '7', 0, '2019-06-18', '1,3', ''),
+(4, 'teri', 'gg', 'ggg', NULL, '1,4,5', 0, '2019-06-04', '1,2', '3rfjerjfhjkefkjhfu4f 4fbbkjfnjnf4fnjkf fkjn\r\njebjkfebkjfjknfrkfn 4nknkefnknfkwrlfnkrfnkjfn');
 
 -- --------------------------------------------------------
 
@@ -58,26 +69,12 @@ CREATE TABLE IF NOT EXISTS `tags` (
 --
 
 INSERT INTO `tags` (`id`, `name`) VALUES
-(1, 'Machine learning');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `teams`
---
-
-DROP TABLE IF EXISTS `teams`;
-CREATE TABLE IF NOT EXISTS `teams` (
-  `id` int(100) NOT NULL,
-  `member1` int(100) DEFAULT NULL,
-  `member2` int(100) DEFAULT NULL,
-  `member3` int(100) DEFAULT NULL,
-  `member4` int(100) DEFAULT NULL,
-  `member5` int(100) DEFAULT NULL,
-  `member6` int(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
+(1, 'Machine learning'),
+(2, 'ai'),
+(3, 'ait'),
+(5, 'backend'),
+(4, 'webT'),
+(4, 'webT');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
