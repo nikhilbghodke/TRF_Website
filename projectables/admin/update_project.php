@@ -24,7 +24,7 @@
                 <br />  
                 <h2 align="center">Welcome to the admin Page</h2>  
                 <div class="form-group">  
-                     <form name="add_name" id="add_name" action="update_info.php" method="post" enctype="multipart/form-data">  
+                     <form name="add_name" id="add_name" action="update_project_action.php" method="post" enctype="multipart/form-data">  
                           <div class="table-responsive">  
                                <table class="table table-bordered" id="dynamic_field"> 
 							   	 <?php
@@ -50,7 +50,7 @@
 													{$number++;
 											$name=$row['Name'];
 			
-												$str2=$str2.$name.',';
+												$str2=$str2.$name.',';//string of ids of users
 			
 													}
 										}
@@ -66,9 +66,9 @@
 											while($rows=mysqli_fetch_assoc($runn2))
 													{$num++;
 											$tagname=$rows['name'];
-											//echo $tagname;
+											
 			
-												$str1=$str1.$tagname.',';
+												$str1=$str1.$tagname.',';//string of ids of tag names
 												
 			
 													}
@@ -78,14 +78,14 @@
 									?>
 									
 									<tr>  
-                                         <td><input type="text" name="team[]"  value="<?php  echo $str2;?>"  class="form-control name_list" /></td>  
+                                         <td><input type="text" name="team[]"  value="<?php  echo $str2;?>"  class="form-control name_list" required></td>  
                                          </tr>
 									
                                    
 								 </table>
 								 <table class="table table-bordered" id="dynamic_field_tag"> 
 									<tr>  
-                                         <td><input type="text" name="name[]"  value= "<?php  echo $str1;?>"  class="form-control name_list" /></td>  
+                                         <td><input type="text" name="name[]"  value= "<?php  echo $str1;?>"  class="form-control name_list" required></td>  
                                            </tr>
                                    
 								 </table>
