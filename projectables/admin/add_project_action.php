@@ -87,7 +87,7 @@
 		if($str!="" AND $string!="")
 		{
 		move_uploaded_file($tempname,"./images/$imgname");
-		$q1="INSERT INTO `project`(`id`, `title`,`Description`, `status`, `githubLink`, `photo`,`teammember`,`date`,`tags`) VALUES ('$id3','$title','$description','$status','$link','$imgname','$string','$date','$str')";
+		$q1="INSERT INTO `project`(`id`, `title`,`Description`, `status`, `githubLink`, `photo`,`teamdid`,`date`,`tags`) VALUES ('$id3','$title','$description','$status','$link','$imgname','$string','$date','$str')";
 		
 		$r1=mysqli_query($con,$q1);
 		

@@ -84,7 +84,7 @@
 										}
 										move_uploaded_file($tempname,"./images/$imgname");
 										if($str3!="" AND $str4!="")
-										{$qry3="UPDATE `project` SET `id`='$id4',`title`='$title',`status`='$status',`githubLink`='$link',`photo`='$imgname',`teammember`='$str3',`date`='$date',`tags`='$str4' WHERE  `id`='$id1'";
+										{$qry3="UPDATE `project` SET `id`='$id4',`title`='$title',`status`='$status',`githubLink`='$link',`photo`='$imgname',`teamdid`='$str3',`date`='$date',`tags`='$str4' WHERE  `id`='$id1'";
 										$torun=mysqli_query($con,$qry3);
 										if($torun==TRUE)
 											echo "Data inserted Successfully;";
